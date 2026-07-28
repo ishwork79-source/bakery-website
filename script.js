@@ -3,23 +3,22 @@
 const menuItems = [
     {
         id: 1,
-        name: 'Classic Croissant',
-        price: '$4.50',
-        description: 'Butter, flaky, and perfectly golden',
+        name: 'Brownie',
+        description: 'Butter, flaky, and perfectly golde',
         category: 'pastry',
         image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400'
     },
     {
         id: 2,
-        name: 'Chocolate Cake',
+        name: 'Shakes',
         price: '$6.00',
         description: 'Rich, moist, with dark chocolate ganache',
         category: 'cake',
-        image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400'
+        image: 'https://www.google.com/imgres?q=cold%20coco&imgurl=https%3A%2F%2Fwww.kansarrecipes.com%2Fwp-content%2Fuploads%2F2023%2F02%2Fcold-coco-in-glass.jpg&imgrefurl=https%3A%2F%2Fwww.kansarrecipes.com%2Fcold-coco-recipe-experience-surats-famous-chocolate-cocoa-drink%2F&docid=7__GGSVsT9VCXM&tbnid=3IH5mVJnZF8SIM&vet=12ahUKEwi7xs6y6JyVAxU74jgGHckDBkYQnPAOegQIRxAA..i&w=1280&h=1920&hcb=2&ved=2ahUKEwi7xs6y6JyVAxU74jgGHckDBkYQnPAOegQIRxAA'
     },
     {
         id: 3,
-        name: 'Sourdough Bread',
+        name: 'Bowl',
         price: '$5.50',
         description: 'Tangy, crusty artisan loaf',
         category: 'bread',
@@ -27,7 +26,7 @@ const menuItems = [
     },
     {
         id: 4,
-        name: 'Blueberry Muffin',
+        name: 'Waffles',
         price: '$3.75',
         description: 'Packed with fresh blueberries',
         category: 'pastry',
@@ -35,7 +34,7 @@ const menuItems = [
     },
     {
         id: 5,
-        name: 'Vanilla Cupcake',
+        name: 'Mini Cakes',
         price: '$4.00',
         description: 'Fluffy vanilla with buttercream frosting',
         category: 'cake',
@@ -43,7 +42,15 @@ const menuItems = [
     },
     {
         id: 6,
-        name: 'Cinnamon Roll',
+        name: 'Cookie-Tin',
+        price: '$5.00',
+        description: 'Gooey, spiced, with cream cheese icing',
+        category: 'pastry',
+        image: 'https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=400'
+    },
+    {
+        id: 7,
+        name: 'Extra Varities',
         price: '$5.00',
         description: 'Gooey, spiced, with cream cheese icing',
         category: 'pastry',
@@ -89,7 +96,6 @@ function renderMenu() {
             <img src="${item.image}" alt="${item.name}" />
             <h4>${item.name}</h4>
             <p class="description">${item.description}</p>
-            <p class="price">${item.price}</p>
         </div>
     `).join('');
 }
