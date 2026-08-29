@@ -52,102 +52,77 @@ const shakeItems = [
         id: 'shake-1',
         name: 'Cold Coco',
         price: 100,
-        // 📸 IMAGE: Update with your actual image path
-        // ⚠️ TODO: Replace with your image URL:
-        // image: require('../assets/images/shakes/cold-coco.jpg'),
-        // OR if using web URLs:
-        // image: 'https://your-image-url.com/shakes/cold-coco.jpg',
-        image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400',
+        image: 'images/shakes/cold%20coco.png',
         description: 'Refreshing cold cocoa drink'
     },
     {
         id: 'shake-2',
         name: 'Cold Coffee',
         price: 90,
-        // 📸 IMAGE: Update with your actual image path
-        // ⚠️ TODO: Replace with your image URL
-        image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400',
+        image: 'images/shakes/cold%20coffee.png',
         description: 'Chilled coffee with a hint of sweetness'
     },
     {
         id: 'shake-3',
         name: 'Chocolate',
         price: 130,
-        // 📸 IMAGE: Update with your actual image path
-        // ⚠️ TODO: Replace with your image URL
-        image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400',
+        image: 'images/shakes/chocolate.png',
         description: 'Classic chocolate milkshake'
     },
     {
         id: 'shake-4',
         name: 'Oreo',
         price: 130,
-        // 📸 IMAGE: Update with your actual image path
-        // ⚠️ TODO: Replace with your image URL
-        image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400',
+        image: 'images/shakes/oreo.png',
         description: 'Creamy shake with crushed Oreo cookies'
     },
     {
         id: 'shake-5',
         name: 'Nutty Nutella',
         price: 160,
-        // 📸 IMAGE: Update with your actual image path
-        // ⚠️ TODO: Replace with your image URL
-        image: 'https://images.unsplash.com/photo-1577805947697-89e18249d767?w=400',
+        image: 'images/shakes/nutty%20nutrella.png',
         description: 'Hazelnut Nutella shake with nuts'
     },
     {
         id: 'shake-6',
         name: 'Badam',
         price: 130,
-        // 📸 IMAGE: Update with your actual image path
-        // ⚠️ TODO: Replace with your image URL
-        image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=400',
+        image: 'images/shakes/badam.png',
         description: 'Rich almond milk shake'
     },
     {
         id: 'shake-7',
         name: 'Choco Brownie',
         price: 160,
-        // 📸 IMAGE: Update with your actual image path
-        // ⚠️ TODO: Replace with your image URL
-        image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400',
+        image: 'images/shakes/choco%20brownie.png',
         description: 'Decadent brownie blended in shake'
     },
     {
         id: 'shake-8',
         name: 'Kit Kat',
         price: 140,
-        // 📸 IMAGE: Update with your actual image path
-        // ⚠️ TODO: Replace with your image URL
-        image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400',
+        image: 'images/shakes/kitkat.png',
         description: 'Shake with Kit Kat chunks'
     },
     {
         id: 'shake-9',
         name: 'Mango',
         price: 120,
-        // 📸 IMAGE: Update with your actual image path
-        // ⚠️ TODO: Replace with your image URL
-        image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=400',
+        image: 'images/shakes/mango.png',
         description: 'Fresh mango shake'
     },
     {
         id: 'shake-10',
         name: 'Banana',
         price: 110,
-        // 📸 IMAGE: Update with your actual image path
-        // ⚠️ TODO: Replace with your image URL
-        image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=400',
+        image: 'images/shakes/banana.png',
         description: 'Creamy banana shake'
     },
     {
         id: 'shake-11',
         name: 'Strawberry',
         price: 120,
-        // 📸 IMAGE: Update with your actual image path
-        // ⚠️ TODO: Replace with your image URL
-        image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400',
+        image: 'images/shakes/strawberry.png',
         description: 'Fresh strawberry shake'
     }
 ];
@@ -550,9 +525,7 @@ const menuCards = [
     {
         id: 'shakes',
         name: 'Shakes',
-        // 📸 IMAGE: Category card image
-        // ⚠️ TODO: Replace with your category image
-        image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400',
+        image: 'images/shakes/cold%20coco.png',
         description: 'Refreshing and creamy shakes',
         items: shakeItems,
         type: 'shake'
@@ -642,6 +615,26 @@ const specialityItems = [
 ];
 
 
+function isRenderableImage(value) {
+    return typeof value === 'string' && value.trim() !== '' && (
+        value.startsWith('http') ||
+        value.startsWith('/') ||
+        value.startsWith('images/') ||
+        value.startsWith('./') ||
+        value.includes('/') ||
+        value.includes('.')
+    );
+}
+
+function renderImageTag(image, alt, imageClassName, fallbackClassName, emojiFallback = '🍰') {
+    if (!isRenderableImage(image)) {
+        return `<div class="${fallbackClassName}">${image || emojiFallback}</div>`;
+    }
+
+    const normalizedSrc = image.replace(/\s+/g, '%20');
+    return `<img src="${normalizedSrc}" alt="${alt}" class="${imageClassName}" />`;
+}
+
 // ============================================================
 // 🖥️ RENDER MENU CARDS
 // ============================================================
@@ -651,10 +644,7 @@ function renderMenu() {
     
     grid.innerHTML = menuCards.map(card => `
         <div class="menu-item" data-id="${card.id}" data-type="${card.type}">
-            ${typeof card.image === 'string' && card.image.startsWith('http') ? 
-                `<img src="${card.image}" alt="${card.name}" />` :
-                `<div class="menu-item-emoji">${card.image}</div>`
-            }
+            ${renderImageTag(card.image, card.name, 'menu-item-img', 'menu-item-emoji', card.image || '🍰')}
             <h4>${card.name}</h4>
             <p class="description">${card.description}</p>
             <button class="view-details-btn" data-id="${card.id}">View Details →</button>
@@ -780,10 +770,7 @@ function renderNormalItems(items) {
         <div class="modal-items-grid">
             ${items.map(item => `
                 <div class="modal-item">
-                    ${typeof item.image === 'string' && item.image.startsWith('http') ? 
-                        `<img src="${item.image}" alt="${item.name}" class="modal-item-img" />` :
-                        `<div class="modal-item-emoji">${item.image || '🍰'}</div>`
-                    }
+                    ${renderImageTag(item.image, item.name, 'modal-item-img', 'modal-item-emoji', item.image || '🍰')}
                     <div class="modal-item-info">
                         <h4>${item.name}</h4>
                         <p class="modal-item-desc">${item.description || ''}</p>
@@ -806,10 +793,7 @@ function renderShakeItems(items) {
         <div class="modal-items-grid">
             ${items.map(item => `
                 <div class="modal-item">
-                    ${typeof item.image === 'string' && item.image.startsWith('http') ? 
-                        `<img src="${item.image}" alt="${item.name}" class="modal-item-img" />` :
-                        `<div class="modal-item-emoji">${item.image || '🥤'}</div>`
-                    }
+                    ${renderImageTag(item.image, item.name, 'modal-item-img', 'modal-item-emoji', item.image || '🥤')}
                     <div class="modal-item-info">
                         <h4>${item.name}</h4>
                         <p class="modal-item-desc">${item.description || ''}</p>
@@ -832,10 +816,7 @@ function renderBowlItems(items) {
         <div class="modal-items-grid">
             ${items.map(item => `
                 <div class="modal-item">
-                    ${typeof item.image === 'string' && item.image.startsWith('http') ? 
-                        `<img src="${item.image}" alt="${item.name}" class="modal-item-img" />` :
-                        `<div class="modal-item-emoji">${item.image || '🥣'}</div>`
-                    }
+                    ${renderImageTag(item.image, item.name, 'modal-item-img', 'modal-item-emoji', item.image || '🥣')}
                     <div class="modal-item-info">
                         <h4>${item.name}</h4>
                         <p class="modal-item-desc">${item.description || ''}</p>
@@ -871,10 +852,7 @@ function renderWaffleItems(items) {
         <div class="modal-items-grid" id="waffleItemsGrid">
             ${items.map(item => `
                 <div class="modal-item waffle-item" data-id="${item.id}">
-                    ${typeof item.image === 'string' && item.image.startsWith('http') ? 
-                        `<img src="${item.image}" alt="${item.name}" class="modal-item-img" />` :
-                        `<div class="modal-item-emoji">${item.image || '🧇'}</div>`
-                    }
+                    ${renderImageTag(item.image, item.name, 'modal-item-img', 'modal-item-emoji', item.image || '🧇')}
                     <div class="modal-item-info">
                         <h4>${item.name}</h4>
                         <p class="modal-item-desc">${item.description || ''}</p>
@@ -889,6 +867,10 @@ function renderWaffleItems(items) {
     
     return toggleHtml;
 }
+
+// ============================================================
+// 🧇 Waffle items also use the same image logic
+// ============================================================
 
 
 // ============================================================
