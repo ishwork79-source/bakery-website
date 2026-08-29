@@ -13,35 +13,10 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <div class="logo-icon-wrapper">
-                    <svg class="logo-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#E87896;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#F0A0B8;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <!-- Cupcake wrapper -->
-                        <path d="M20 25 L40 25 L42 45 L18 45 Z" fill="#D4A574" opacity="0.3" stroke="#D4A574" stroke-width="1"/>
-                        <!-- Cupcake base -->
-                        <path d="M22 28 L38 28 L40 42 L20 42 Z" fill="#D4A574" stroke="#C4956A" stroke-width="0.5"/>
-                        <!-- Cupcake swirl frosting -->
-                        <path d="M18 28 Q30 15 42 28 Q30 35 18 28 Z" fill="url(#logoGradient)"/>
-                        <path d="M22 25 Q30 18 38 25 Q30 30 22 25 Z" fill="#F5C8D8" opacity="0.6"/>
-                        <!-- Cherry on top -->
-                        <circle cx="30" cy="20" r="4" fill="#E0536D"/>
-                        <circle cx="30" cy="20" r="1.5" fill="#FF6B8A" opacity="0.5"/>
-                        <!-- Cherry stem -->
-                        <path d="M30 16 Q32 12 34 14" stroke="#4A7C59" stroke-width="1.5" fill="none"/>
-                        <!-- Sprinkles -->
-                        <rect x="24" y="24" width="2" height="4" rx="1" fill="#FF6B8A" transform="rotate(-20 25 26)"/>
-                        <rect x="28" y="22" width="2" height="4" rx="1" fill="#FFB347" transform="rotate(15 29 24)"/>
-                        <rect x="34" y="23" width="2" height="4" rx="1" fill="#4A7C59" transform="rotate(-10 35 25)"/>
-                        <rect x="31" y="26" width="2" height="4" rx="1" fill="#FF6B8A" transform="rotate(25 32 28)"/>
-                        <rect x="26" y="28" width="2" height="4" rx="1" fill="#FFB347" transform="rotate(-30 27 30)"/>
-                    </svg>
-                </div>
-                <span class="logo-text">Just Yummy</span>
+<div class="logo-icon-wrapper">
+    <img src="C:\Users\DELL\OneDrive\Documents\1 PROJECT\website\images\logo.png" alt="Just Yummy Logo" class="logo-image" />
+</div>
+<span class="logo-text">Just Yummy</span>
             </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="nav-link">Home</a></li>
@@ -112,6 +87,7 @@
         <div class="container">
             <h2 class="section-title">Our Menu</h2>
             <p class="section-subtitle">Freshly baked every morning</p>
+            <!-- ⚠️ TODO: Menu items are rendered by JavaScript below -->
             <div class="menu-grid" id="menuGrid"></div>
         </div>
     </section>
@@ -121,6 +97,7 @@
         <div class="container">
             <h2 class="section-title">Our Specialities</h2>
             <p class="section-subtitle">Signature creations you'll love</p>
+            <!-- ⚠️ TODO: Speciality items are rendered by JavaScript below -->
             <div class="speciality-grid" id="specialityGrid"></div>
         </div>
     </section>
@@ -159,6 +136,17 @@
             <p>&copy; 2026 Just Yummy Bakery. Baked with love 💕</p>
         </div>
     </footer>
+
+    <!-- ====== MODAL FOR MENU POPUP (Added for detailed menu view) ====== -->
+    <!-- ⚠️ TODO: This modal will show detailed menu items when a menu card is clicked -->
+    <div class="menu-modal-overlay" id="menuModalOverlay">
+        <div class="menu-modal">
+            <button class="menu-modal-close" id="menuModalClose">&times;</button>
+            <h2 id="menuModalTitle">Menu Details</h2>
+            <!-- ⚠️ TODO: Detailed menu items will be rendered here by JavaScript -->
+            <div class="menu-modal-content" id="menuModalContent"></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

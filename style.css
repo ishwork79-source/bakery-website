@@ -425,17 +425,30 @@ body {
     box-shadow: 0 4px 20px rgba(232, 120, 150, 0.06);
     transition: all 0.3s ease;
     border: 1px solid #FCE4EA;
+    cursor: pointer;
 }
 
 .menu-item:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 40px rgba(232, 120, 150, 0.12);
+    border-color: #E87896;
 }
 
 .menu-item img {
     width: 100%;
     height: 180px;
     object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.menu-item-emoji {
+    font-size: 4rem;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FCE4EA;
     border-radius: 12px;
     margin-bottom: 1rem;
 }
@@ -457,6 +470,24 @@ body {
     color: #A06B80;
     font-size: 0.9rem;
     margin-top: 0.3rem;
+}
+
+.view-details-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    background: linear-gradient(135deg, #E87896, #F0A0B8);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-details-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(232, 120, 150, 0.3);
 }
 
 /* ===== SPECIALITY ===== */
@@ -517,6 +548,296 @@ body {
     font-weight: 600;
     font-size: 1.2rem;
     margin-top: 0.3rem;
+}
+
+/* ============================================================
+   🎯 MENU MODAL - Popup Styles
+   ============================================================ */
+.menu-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(61, 31, 46, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 3000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.menu-modal-overlay.active {
+    display: flex;
+}
+
+.menu-modal {
+    background: #FFF5F7;
+    border-radius: 24px;
+    padding: 2.5rem;
+    max-width: 800px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.4s ease;
+}
+
+.menu-modal-close {
+    position: sticky;
+    top: 0;
+    float: right;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #5D2E46;
+    transition: transform 0.3s ease;
+    z-index: 10;
+}
+
+.menu-modal-close:hover {
+    transform: rotate(90deg);
+}
+
+.menu-modal h2 {
+    font-family: 'Playfair Display', serif;
+    color: #5D2E46;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    padding-right: 2rem;
+}
+
+/* Modal Items Grid */
+.modal-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.modal-item {
+    background: white;
+    border-radius: 16px;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #FCE4EA;
+    transition: all 0.3s ease;
+}
+
+.modal-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(232, 120, 150, 0.1);
+    border-color: #E87896;
+}
+
+.modal-item-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 0.8rem;
+}
+
+.modal-item-emoji {
+    font-size: 3.5rem;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FCE4EA;
+    border-radius: 10px;
+    margin-bottom: 0.8rem;
+}
+
+.modal-item-info h4 {
+    font-family: 'Playfair Display', serif;
+    color: #5D2E46;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.modal-item-desc {
+    color: #A06B80;
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+}
+
+.modal-item-price {
+    color: #E87896;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.modal-item-sizes {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-top: 0.3rem;
+}
+
+.size-tag {
+    background: #FCE4EA;
+    padding: 0.2rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #5D2E46;
+}
+
+/* ============================================================
+   🔄 WAFFLE TOGGLE
+   ============================================================ */
+.waffle-toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0.8rem;
+    background: white;
+    border-radius: 50px;
+    border: 2px solid #FCE4EA;
+}
+
+.toggle-label {
+    font-weight: 600;
+    color: #A06B80;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.toggle-label.active {
+    color: #E87896;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 28px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #FCE4EA;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background: #E87896;
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+    transform: translateX(22px);
+}
+
+/* ============================================================
+   🍪 COOKIE TIN
+   ============================================================ */
+.cookie-tin-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.cookie-tin-image-wrapper {
+    text-align: center;
+}
+
+.cookie-tin-main-img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.cookie-tin-desc {
+    color: #A06B80;
+    font-size: 0.9rem;
+    margin-top: 0.8rem;
+}
+
+.cookie-tin-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #FCE4EA;
+}
+
+.cookie-tin-dropdown-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.cookie-tin-dropdown-group label {
+    font-weight: 600;
+    color: #5D2E46;
+    font-size: 0.95rem;
+}
+
+.cookie-tin-select {
+    padding: 0.6rem 1rem;
+    border: 2px solid #FCE4EA;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: white;
+    outline: none;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.cookie-tin-select:focus {
+    border-color: #E87896;
+}
+
+.cookie-tin-price-display {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 2px solid #FCE4EA;
+}
+
+.cookie-tin-total-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #E87896;
+    font-weight: 700;
+}
+
+.cookie-tin-price-label {
+    color: #A06B80;
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
 }
 
 /* ===== CONTACT ===== */
@@ -647,6 +968,15 @@ body {
     .about-image {
         order: -1;
     }
+    .cookie-tin-container {
+        grid-template-columns: 1fr;
+    }
+    .menu-modal {
+        padding: 1.5rem;
+    }
+    .modal-items-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
 }
 
 @media (max-width: 768px) {
@@ -692,6 +1022,16 @@ body {
         width: 38px;
         height: 38px;
     }
+    .modal-items-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .waffle-toggle-container {
+        flex-wrap: wrap;
+        padding: 0.8rem 1.2rem;
+    }
+    .cookie-tin-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 480px) {
@@ -715,4 +1055,51 @@ body {
     .logo-text::after {
         display: none;
     }
+    .modal-items-grid {
+        grid-template-columns: 1fr;
+    }
+    .menu-modal {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+    .menu-modal h2 {
+        font-size: 1.5rem;
+    }
+    .cookie-tin-total-price {
+        font-size: 2rem;
+    }
+}
+/* ===== LOGO IMAGE ===== */
+.logo-icon-wrapper {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+    overflow: hidden; /* This will crop any overflow */
+    border-radius: 50%;
+}
+
+.logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This will crop the image to fit */
+    /* OR use 'contain' if you want to see the whole image */
+    /* object-fit: contain; */
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+/* If you want it even smaller */
+.logo-icon-wrapper.small {
+    width: 35px;
+    height: 35px;
+}
+
+/* If you want it larger */
+.logo-icon-wrapper.large {
+    width: 60px;
+    height: 60px;
 }
